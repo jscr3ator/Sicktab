@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SickTab</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="terminal-shell">
+      <div class="terminal-topbar">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <p class="title">sicktab@linux:~</p>
+        <button id="settings-toggle" class="settings-btn" type="button" aria-label="Open settings">⚙</button>
+      </div>
+
+      <section class="terminal-body">
+        <div id="terminal-layout" class="terminal-layout">
+          <div class="terminal-main">
+            <p class="meta-line">time: <span id="time">--:--:--</span></p>
+            <p class="meta-line">date: <span id="date">--/--/--</span></p>
+
+            <form id="terminal-form" class="terminal-input" autocomplete="off">
+              <label for="command" class="prompt">user@linux:~$</label>
+              <input
+                id="command"
+                name="command"
+                type="text"
+                placeholder="Type URL or search query..."
+                aria-label="Terminal URL input"
+                spellcheck="false"
+              />
+            </form>
+
+
+
+
+			
+          </div>
+
+          <aside id="auto-panel" class="auto-panel" aria-label="Autocomplete suggestions" hidden>
+            <div class="auto-head">
+              <p class="auto-title">suggestions</p>
+              <button id="clear-suggestions" type="button">clear</button>
+            </div>
+            <ul id="auto-panel-list"></ul>
+          </aside>
+        </div>
+
+        <section id="settings-panel" class="settings-panel" hidden>
+          <h2>settings</h2>
+          <label class="settings-row" for="search-engine">
+            <span>Search engine</span>
+            <select id="search-engine">
+              <option value="duckduckgo">DuckDuckGo</option>
+              <option value="google">Google</option>
+              <option value="brave">Brave</option>
+              <option value="bing">Bing</option>
+            </select>
+          </label>
+          <label class="settings-row" for="open-new-tab">
+            <span>Open in new tab</span>
+            <input id="open-new-tab" type="checkbox" />
+          </label>
+          <label class="settings-row" for="clock-24h">
+            <span>Use 24h clock</span>
+            <input id="clock-24h" type="checkbox" />
+          </label>
+          <label class="settings-row" for="show-seconds">
+            <span>Show seconds</span>
+            <input id="show-seconds" type="checkbox" />
+          </label>
+          <label class="settings-row" for="custom-bang">
+            <span>Custom bang</span>
+            <input id="custom-bang" type="text" placeholder="gh" />
+          </label>
+          <label class="settings-row" for="custom-url">
+            <span>Bang URL</span>
+            <input id="custom-url" type="text" placeholder="https://github.com/search?q=%s" />
+          </label>
+          <div class="settings-row settings-action">
+            <span></span>
+            <button id="add-bang" type="button">Add bang</button>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="clock.js"></script>
+    <script src="terminal.js"></script>
+  </body>
+</html>
