@@ -1,7 +1,5 @@
 # Sicktab
 
-# download sicktab the zip file 
+### thanks to reboot from hackclub for making me actually work on this 4 years later
 
-working on a chrome extension for this
-
-## https://SickTab.jscreate.repl.co
+> now a chrome extension will be out soon

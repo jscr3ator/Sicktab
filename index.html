@@ -54,61 +54,78 @@
 
         <section id="settings-panel" class="settings-panel" hidden>
           <h2>settings</h2>
-          <label class="settings-row" for="search-engine">
-            <span>Search engine</span>
-            <select id="search-engine">
-              <option value="duckduckgo">DuckDuckGo</option>
-              <option value="google">Google</option>
-              <option value="brave">Brave</option>
-              <option value="bing">Bing</option> 
-            </select>
-          </label>
-          <label class="settings-row" for="theme-select">
-            <span>Theme</span>
-            <select id="theme-select">
-              <option value="dark">Dark</option>
-              <option value="matrix">Matrix</option>
-              <option value="dracula">Dracula</option>
-              <option value="amber">Amber</option>
-            </select>
-          </label>
-          <label class="settings-row" for="open-new-tab">
-            <span>Open in new tab</span>
-            <input id="open-new-tab" type="checkbox" />
-          </label>
-          <label class="settings-row" for="clock-24h">
-            <span>Use 24h clock</span>
-            <input id="clock-24h" type="checkbox" />
-          </label>
-          <label class="settings-row" for="show-seconds">
-            <span>Show seconds</span>
-            <input id="show-seconds" type="checkbox" />
-          </label>
+          <div class="settings-group">
+            <p class="settings-group-title">general</p>
+            <label class="settings-row" for="search-engine">
+              <span>Search engine</span>
+              <select id="search-engine">
+                <option value="google">Google</option>
+                <option value="brave">Brave</option>
+                <option value="bing">Bing</option>
+              </select>
+            </label>
+            <label class="settings-row" for="theme-select">
+              <span>Theme</span>
+              <select id="theme-select">
+                <option value="dark">Dark</option>
+                <option value="matrix">Matrix</option>
+                <option value="dracula">Dracula</option>
+                <option value="amber">Amber</option>
+              </select>
+            </label>
+            <label class="settings-row" for="open-new-tab">
+              <span>Open in new tab</span>
+              <input id="open-new-tab" type="checkbox" />
+            </label>
+          </div>
+
+          <div class="settings-group">
+            <p class="settings-group-title">clock</p>
+            <label class="settings-row" for="clock-24h">
+              <span>Use 24h clock</span>
+              <input id="clock-24h" type="checkbox" />
+            </label>
+            <label class="settings-row" for="show-seconds">
+              <span>Show seconds</span>
+              <input id="show-seconds" type="checkbox" />
+            </label>
+          </div>
+
+          <div class="settings-group">
+            <p class="settings-group-title">custom bang</p>
+            <div class="settings-row settings-action">
+              <span>Manage custom bangs</span>
+              <button id="open-bangs-popup" type="button">Open</button>
+            </div>
+          </div>
+
+          <div class="settings-row settings-action settings-footer-action">
+            <span></span>
+            <button id="reset-settings" type="button">Reset to defaults</button>
+          </div>
+        </section>
+      </section>
+
+      <section id="bangs-popup" class="bangs-popup" aria-label="Custom bangs" hidden>
+        <div class="bangs-popup-card" role="dialog" aria-modal="true" aria-labelledby="bangs-popup-title">
+          <div class="bangs-popup-head">
+            <h3 id="bangs-popup-title">custom bangs</h3>
+            <button id="close-bangs-popup" type="button" aria-label="Close custom bangs popup">×</button>
+          </div>
           <label class="settings-row" for="custom-bang">
-            <span>Custom bang</span>
+            <span>Shortcut</span>
             <input id="custom-bang" type="text" placeholder="gh" />
           </label>
           <label class="settings-row" for="custom-url">
-            <span>Bang URL</span>
+            <span>URL Redirection</span>
             <input id="custom-url" type="text" placeholder="https://github.com/search?q=%s" />
           </label>
           <div class="settings-row settings-action">
             <span></span>
             <button id="add-bang" type="button">Add bang</button>
           </div>
-
-      
-                    <div class="settings-row settings-action">
-            <span></span>
-            <button id="add-bang" type="button">Add bang</button>
-          </div>
           <ul id="bangs-list" class="bangs-list"></ul>
-          <div class="settings-row settings-action">
-            <span></span>
-            <button id="reset-settings" type="button">Reset to defaults</button>
-          </div>
-        </section>
-        </section>
+        </div>
       </section>
 
       
