@@ -1,13 +1,18 @@
 const $ = (id) => document.getElementById(id);
 const form = $("terminal-form"), input = $("command"), hint = $("hint");
 const layout = $("terminal-layout"), autoPanel = $("auto-panel");
-const panel = $("settings-panel"), btn = $("settings-toggle"), engine = $("search-engine");
+const panel = $("settings-panel"), btn = $("settings-toggle"), engine = $("search-engine"), themeSel = $("theme-select");
 const newTab = $("open-new-tab"), clock24 = $("clock-24h"), secs = $("show-seconds");
 const bang = $("custom-bang"), bangUrl = $("custom-url"), addBang = $("add-bang"), autoList = $("auto-panel-list");
 const clearBtn = $("clear-suggestions");
-const KEY = "sicktab:settings", DEF = { searchEngine: "duckduckgo", openInNewTab: false, use24Hour: false, showSeconds: true, customBangs: {}, history: [], hiddenSuggestions: [] };
+const KEY = "sicktab:settings", DEF = { searchEngine: "google", theme: "dark", openInNewTab: false, use24Hour: false, showSeconds: true, customBangs: {}, history: [], hiddenSuggestions: [] };
 const SEARCH = { duckduckgo: "https://duckduckgo.com/?q=", google: "https://www.google.com/search?q=", brave: "https://search.brave.com/search?q=", bing: "https://www.bing.com/search?q=" };
 const BANGS = ["!g", "!yt", "!w", "!gh", "!r", "!so", "!maps"];
+const THEMES = ["dark", "matrix", "dracula", "amber"];
+const focusInput = () => {
+  if (!input) return;
+  input.focus({ preventScroll: true });
+};
 const load = () => { try { return { ...DEF, ...(JSON.parse(localStorage.getItem(KEY) || "{}")) }; } catch { return { ...DEF }; } };
 const save = (s) => { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch {} };
 const state = load();
@@ -34,7 +39,10 @@ const updateAuto = () => {
 
 const updateUI = () => {
   engine.value = state.searchEngine; newTab.checked = state.openInNewTab; clock24.checked = state.use24Hour; secs.checked = state.showSeconds;
-  hint.textContent = `Try: !g linux, !yt terminal, github.com, or any query (${engine.options[engine.selectedIndex].text})`;
+  const theme = THEMES.includes(state.theme) ? state.theme : "dark";
+  if (themeSel) themeSel.value = theme;
+  document.body.dataset.theme = theme;
+  if (hint) hint.textContent = `Try: !g linux, !yt terminal, github.com, or any query (${engine.options[engine.selectedIndex].text})`;
   updateAuto();
 };
 
@@ -46,7 +54,7 @@ const toTarget = (raw) => {
     const tpl = state.customBangs?.[k];
     if (tpl) return tpl.includes("%s") ? tpl.replace("%s", encodeURIComponent(q)) : `${tpl}${encodeURIComponent(q)}`;
     return `https://duckduckgo.com/?q=${encodeURIComponent(`!${k} ${q}`.trim())}`;
-  }
+  } 
   if (/^[a-zA-Z][a-zA-Z\d+\-.]*:\/\//.test(v)) return v;
   if (!/\s/.test(v) && /^(localhost(:\d+)?|(\d{1,3}\.){3}\d{1,3}|([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,})(:\d+)?(\/.*)?$/.test(v)) return `https://${v}`;
   return `${SEARCH[state.searchEngine] || SEARCH.duckduckgo}${encodeURIComponent(v)}`;
@@ -69,6 +77,11 @@ document.addEventListener("keydown", (e) => {
   state.searchEngine = engine.value; state.openInNewTab = newTab.checked; state.use24Hour = clock24.checked; state.showSeconds = secs.checked;
   save(state); updateUI();
 }));
+
+themeSel?.addEventListener("change", () => {
+  state.theme = THEMES.includes(themeSel.value) ? themeSel.value : "dark";
+  save(state); updateUI();
+});
 
 input.addEventListener("input", updateAuto);
 autoList.addEventListener("click", (e) => {
@@ -104,5 +117,11 @@ addBang.addEventListener("click", () => {
 });
 
 updateUI();
-input.focus();
+focusInput();
+requestAnimationFrame(focusInput);
+setTimeout(focusInput, 50);
+window.addEventListener("focus", focusInput);
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) focusInput();
+});
 window.addEventListener("resize", updateAuto);

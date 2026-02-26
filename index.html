@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SickTab</title>
+    <title>New Tab</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -12,7 +12,7 @@
         <span class="dot red"></span>
         <span class="dot yellow"></span>
         <span class="dot green"></span>
-        <p class="title">sicktab@linux:~</p>
+        <p class="title">sicktab@newtab:~</p>
         <button id="settings-toggle" class="settings-btn" type="button" aria-label="Open settings">⚙</button>
       </div>
 
@@ -28,6 +28,7 @@
                 id="command"
                 name="command"
                 type="text"
+                autofocus
                 placeholder="Type URL or search query..."
                 aria-label="Terminal URL input"
                 spellcheck="false"
@@ -49,6 +50,8 @@
           </aside>
         </div>
 
+
+
         <section id="settings-panel" class="settings-panel" hidden>
           <h2>settings</h2>
           <label class="settings-row" for="search-engine">
@@ -57,7 +60,16 @@
               <option value="duckduckgo">DuckDuckGo</option>
               <option value="google">Google</option>
               <option value="brave">Brave</option>
-              <option value="bing">Bing</option>
+              <option value="bing">Bing</option> 
+            </select>
+          </label>
+          <label class="settings-row" for="theme-select">
+            <span>Theme</span>
+            <select id="theme-select">
+              <option value="dark">Dark</option>
+              <option value="matrix">Matrix</option>
+              <option value="dracula">Dracula</option>
+              <option value="amber">Amber</option>
             </select>
           </label>
           <label class="settings-row" for="open-new-tab">
@@ -85,6 +97,7 @@
             <button id="add-bang" type="button">Add bang</button>
           </div>
 
+      
                     <div class="settings-row settings-action">
             <span></span>
             <button id="add-bang" type="button">Add bang</button>

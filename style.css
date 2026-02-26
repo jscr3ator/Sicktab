@@ -14,6 +14,71 @@ body {
   color: #d2f8d2;
 }
 
+body[data-theme="matrix"] {
+  background: radial-gradient(circle at top, #04230f 0%, #02170b 45%, #010a05 100%);
+  color: #98ffb6;
+}
+
+body[data-theme="matrix"] .terminal-shell,
+body[data-theme="matrix"] .terminal-input,
+body[data-theme="matrix"] .auto-panel,
+body[data-theme="matrix"] .settings-panel,
+body[data-theme="matrix"] #auto-panel-list li,
+body[data-theme="matrix"] .settings-row select,
+body[data-theme="matrix"] .settings-row input[type="text"],
+body[data-theme="matrix"] #clear-suggestions,
+body[data-theme="matrix"] .remove-suggestion,
+body[data-theme="matrix"] .settings-action button,
+body[data-theme="matrix"] .settings-btn {
+  border-color: #1b8f4d;
+  background: #041b10;
+  color: #9cffba;
+}
+
+body[data-theme="dracula"] {
+  background: radial-gradient(circle at top, #2b2142 0%, #191426 45%, #110d1a 100%);
+  color: #f8f8f2;
+}
+
+body[data-theme="dracula"] .terminal-topbar { background: #221a33; border-bottom-color: #5e4a8f; }
+body[data-theme="dracula"] .terminal-shell,
+body[data-theme="dracula"] .terminal-input,
+body[data-theme="dracula"] .auto-panel,
+body[data-theme="dracula"] .settings-panel,
+body[data-theme="dracula"] #auto-panel-list li,
+body[data-theme="dracula"] .settings-row select,
+body[data-theme="dracula"] .settings-row input[type="text"],
+body[data-theme="dracula"] #clear-suggestions,
+body[data-theme="dracula"] .remove-suggestion,
+body[data-theme="dracula"] .settings-action button,
+body[data-theme="dracula"] .settings-btn {
+  border-color: #6f56a8;
+  background: #1c1630;
+  color: #f8f8f2;
+}
+
+body[data-theme="amber"] {
+  background: radial-gradient(circle at top, #2b1b02 0%, #1b1203 45%, #120b02 100%);
+  color: #ffd57a;
+}
+
+body[data-theme="amber"] .terminal-topbar { background: #2a1c08; border-bottom-color: #8b5e1a; }
+body[data-theme="amber"] .terminal-shell,
+body[data-theme="amber"] .terminal-input,
+body[data-theme="amber"] .auto-panel,
+body[data-theme="amber"] .settings-panel,
+body[data-theme="amber"] #auto-panel-list li,
+body[data-theme="amber"] .settings-row select,
+body[data-theme="amber"] .settings-row input[type="text"],
+body[data-theme="amber"] #clear-suggestions,
+body[data-theme="amber"] .remove-suggestion,
+body[data-theme="amber"] .settings-action button,
+body[data-theme="amber"] .settings-btn {
+  border-color: #996723;
+  background: #1b1205;
+  color: #ffd57a;
+}
+
 .terminal-shell {
   width: min(900px, 92vw);
   border: 1px solid #2f3e35;
