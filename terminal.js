@@ -8,7 +8,6 @@ const clearBtn = $("clear-suggestions");
 const KEY = "sicktab:settings", DEF = { searchEngine: "duckduckgo", openInNewTab: false, use24Hour: false, showSeconds: true, customBangs: {}, history: [], hiddenSuggestions: [] };
 const SEARCH = { duckduckgo: "https://duckduckgo.com/?q=", google: "https://www.google.com/search?q=", brave: "https://search.brave.com/search?q=", bing: "https://www.bing.com/search?q=" };
 const BANGS = ["!g", "!yt", "!w", "!gh", "!r", "!so", "!maps"];
-
 const load = () => { try { return { ...DEF, ...(JSON.parse(localStorage.getItem(KEY) || "{}")) }; } catch { return { ...DEF }; } };
 const save = (s) => { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch {} };
 const state = load();
